@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   Dialog,
@@ -42,30 +41,60 @@ export const ShareDialog: React.FC<ShareDialogProps> = ({ isOpen, onClose, compl
   const handleTwitterShare = () => {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
     window.open(twitterUrl, '_blank');
+    if (window.gtag) {
+      window.gtag('event', 'share_complimentary', {
+        event_category: 'social',
+        event_label: 'twitter'
+      });
+    }
     onClose();
   };
 
   const handleFacebookShare = () => {
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}`;
     window.open(facebookUrl, '_blank');
+    if (window.gtag) {
+      window.gtag('event', 'share_complimentary', {
+        event_category: 'social',
+        event_label: 'facebook'
+      });
+    }
     onClose();
   };
 
   const handleLinkedInShare = () => {
     const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}&summary=${encodeURIComponent(shareText)}`;
     window.open(linkedinUrl, '_blank');
+    if (window.gtag) {
+      window.gtag('event', 'share_complimentary', {
+        event_category: 'social',
+        event_label: 'linkedin'
+      });
+    }
     onClose();
   };
 
   const handleWhatsAppShare = () => {
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`;
     window.open(whatsappUrl, '_blank');
+    if (window.gtag) {
+      window.gtag('event', 'share_complimentary', {
+        event_category: 'social',
+        event_label: 'whatsapp'
+      });
+    }
     onClose();
   };
 
   const handleEmailShare = () => {
     const emailUrl = `mailto:?subject=Daily Compliment&body=${encodeURIComponent(shareText + '\n\n' + shareUrl)}`;
     window.open(emailUrl);
+    if (window.gtag) {
+      window.gtag('event', 'share_complimentary', {
+        event_category: 'social',
+        event_label: 'email'
+      });
+    }
     onClose();
   };
 

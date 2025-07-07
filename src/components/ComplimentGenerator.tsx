@@ -4,6 +4,14 @@ import { toast } from 'sonner';
 import { generateComplimentCard } from '@/utils/cardGenerator';
 import { ShareDialog } from './ShareDialog';
 
+// TypeScript declaration for gtag
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 interface Compliment {
   id: string;
   text: string;
@@ -54,6 +62,12 @@ export const ComplimentGenerator: React.FC<ComplimentGeneratorProps> = ({
       link.download = `compliment-${Date.now()}.png`;
       link.href = canvas.toDataURL();
       link.click();
+      if (window.gtag) {
+        window.gtag('event', 'download_complimentary', {
+          event_category: 'engagement',
+          event_label: 'Complimentary Download'
+        });
+      }
       toast.success('Compliment card downloaded!');
     } catch (error) {
       toast.error('Failed to generate card');
@@ -139,7 +153,15 @@ export const ComplimentGenerator: React.FC<ComplimentGeneratorProps> = ({
         <div className="flex justify-center mt-4">
           <span
             className="text-xs text-blue-600 underline cursor-pointer hover:text-blue-800 transition-colors duration-200"
-            onClick={() => window.open('https://x.com/varmava19295501', '_blank')}
+            onClick={() => {
+              window.open('https://x.com/varmava19295501', '_blank');
+              if (window.gtag) {
+                window.gtag('event', 'click_made_by_varma', {
+                  event_category: 'engagement',
+                  event_label: 'Made by @varmava19295501'
+                });
+              }
+            }}
           >
             Made by @varmava19295501
           </span>
