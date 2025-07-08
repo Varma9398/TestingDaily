@@ -19,5 +19,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: mode === 'development' || process.env.VERCEL ? '/' : '/TestingDaily/',
+  base: mode === 'development' ? '/' : '/TestingDaily/',
 }));

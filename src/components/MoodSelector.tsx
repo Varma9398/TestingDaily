@@ -28,8 +28,8 @@ interface MoodSelectorProps {
 
 export const MoodSelector: React.FC<MoodSelectorProps> = ({ selectedMood, onMoodChange }) => {
   return (
-    <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/60">
-      <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+    <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-white/60 card-hover">
+      <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center gradient-text">
         Choose Your Mood
       </h3>
       
@@ -43,9 +43,9 @@ export const MoodSelector: React.FC<MoodSelectorProps> = ({ selectedMood, onMood
               key={mood.id}
               onClick={() => onMoodChange(mood.id)}
               className={`
-                relative p-4 rounded-2xl transition-all duration-300 transform hover:scale-105 border-2
+                relative p-4 rounded-2xl transition-all duration-300 transform hover:scale-105 border-2 rotate-scale-hover
                 ${isSelected 
-                  ? 'shadow-lg shadow-purple-200/50 scale-105 border-white/80' 
+                  ? 'shadow-lg shadow-purple-200/50 scale-105 border-white/80 pulse-glow' 
                   : 'shadow-md hover:shadow-lg border-transparent hover:border-white/40'
                 }
               `}

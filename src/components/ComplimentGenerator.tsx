@@ -76,18 +76,18 @@ export const ComplimentGenerator: React.FC<ComplimentGeneratorProps> = ({
 
   return (
     <>
-      <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/50">
+      <div className="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/50 card-hover glow-on-hover">
         {/* Compliment Display */}
         <div className="text-center mb-8">
           {compliment ? (
             <div className="space-y-4">
-              <div className="text-6xl mb-4 animate-bounce">
+              <div className="text-6xl mb-4 float-animation sparkle">
                 {compliment.emoji}
               </div>
-              <blockquote className="text-2xl md:text-3xl font-medium text-gray-800 leading-relaxed">
+              <blockquote className="text-2xl md:text-3xl font-medium text-gray-800 leading-relaxed gradient-text">
                 "{compliment.text}"
               </blockquote>
-              <div className="inline-block px-4 py-2 bg-gradient-to-r from-purple-200 to-pink-200 rounded-full">
+              <div className="inline-block px-4 py-2 bg-gradient-to-r from-purple-200 to-pink-200 rounded-full pulse-glow">
                 <span className="text-sm font-medium text-purple-800 capitalize">
                   {compliment.mood} Mood
                 </span>
@@ -107,9 +107,9 @@ export const ComplimentGenerator: React.FC<ComplimentGeneratorProps> = ({
           <button
             onClick={onGenerate}
             disabled={isGenerating}
-            className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed btn-enhanced glow-on-hover"
           >
-            <RefreshCw className={`w-5 h-5 ${isGenerating ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-5 h-5 ${isGenerating ? 'enhanced-spin' : ''}`} />
             <span>{isGenerating ? 'Generating...' : 'New Compliment'}</span>
           </button>
 
@@ -117,9 +117,9 @@ export const ComplimentGenerator: React.FC<ComplimentGeneratorProps> = ({
             <>
               <button
                 onClick={onToggleFavorite}
-                className={`p-3 rounded-2xl transition-all duration-300 transform hover:scale-105 ${
+                className={`p-3 rounded-2xl transition-all duration-300 transform hover:scale-105 rotate-scale-hover ${
                   isFavorite 
-                    ? 'bg-gradient-to-r from-red-400 to-pink-400 text-white shadow-lg' 
+                    ? 'bg-gradient-to-r from-red-400 to-pink-400 text-white shadow-lg pulse-glow' 
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -128,21 +128,21 @@ export const ComplimentGenerator: React.FC<ComplimentGeneratorProps> = ({
 
               <button
                 onClick={handleCopy}
-                className="p-3 bg-gray-100 text-gray-600 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gray-200"
+                className="p-3 bg-gray-100 text-gray-600 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:bg-gray-200 rotate-scale-hover"
               >
                 <Copy className="w-5 h-5" />
               </button>
 
               <button
                 onClick={handleShare}
-                className="p-3 bg-gradient-to-r from-blue-400 to-cyan-400 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                className="p-3 bg-gradient-to-r from-blue-400 to-cyan-400 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg rotate-scale-hover"
               >
                 <Share className="w-5 h-5" />
               </button>
 
               <button
                 onClick={handleDownload}
-                className="p-3 bg-gradient-to-r from-green-400 to-teal-400 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                className="p-3 bg-gradient-to-r from-green-400 to-teal-400 text-white rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg rotate-scale-hover"
               >
                 <Download className="w-5 h-5" />
               </button>
